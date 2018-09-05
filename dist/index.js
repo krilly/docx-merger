@@ -51,9 +51,6 @@ function DocxMerger(options, files) {
     Media.prepareMediaFiles(files, this._media);
     RelContentType.mergeRelations(files, this._rel);
 
-    bulletsNumbering.prepareNumbering(files);
-    bulletsNumbering.mergeNumbering(files, this._numbering);
-
     Style.prepareStyles(files, this._style);
     Style.mergeStyles(files, this._style);
 
@@ -81,7 +78,6 @@ function DocxMerger(options, files) {
     RelContentType.generateContentTypes(zip, this._contentTypes);
     Media.copyMediaFiles(zip, this._media, this._files);
     RelContentType.generateRelations(zip, this._rel);
-    bulletsNumbering.generateNumbering(zip, this._numbering);
     Style.generateStyles(zip, this._style);
 
     zip.file("word/document.xml", xml);
